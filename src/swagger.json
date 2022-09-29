@@ -1,0 +1,111 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "API-Whatsapp Documentation",
+        "description": "This is an API for sending messages centrally",
+        "version": "1.0.0",
+        "contact": {
+            "email": "gabrielmh13@hotmail.com"
+        }
+    },
+    "paths": {
+        "/messages": {
+            "post": {
+                "tags": [
+                    "Messages"
+                ],
+                "summary": "Send messages",
+                "description": "Send multiple messages to a number",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "company": {
+                                        "type": "string"
+                                    },
+                                    "number": {
+                                        "type": "string"
+                                    },
+                                    "messages": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "properties": {
+                                                "text": "Test message"
+                                            }
+                                        }
+                                    }
+                                },
+                                "example": {
+                                    "company": "Company Name",
+                                    "number": "554799999999",
+                                    "messages": [
+                                        {
+                                            "text": "Test message"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Response body"
+                    },
+                    "400": {
+                        "description": "Malformed request syntax"
+                    },
+                    "500": {
+                        "description": "Failed to send messages"
+                    }
+                }
+            },
+            "get": {
+                "tags": [
+                    "Messages"
+                ],
+                "summary": "Messages in progress",
+                "description": "List all messages and numbers in progress",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "type": "object",
+                                "properties": {
+                                    "company": {
+                                        "type": "string"
+                                    },
+                                    "number": {
+                                        "type": "string"
+                                    },
+                                    "messages": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "properties": {
+                                                "text": "Test message"
+                                            }
+                                        }
+                                    }
+                                },
+                                "example": {
+                                    "company": "Company Name",
+                                    "number": "554799999999",
+                                    "messages": [
+                                        {
+                                            "text": "Test message"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

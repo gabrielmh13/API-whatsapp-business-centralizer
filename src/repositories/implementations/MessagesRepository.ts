@@ -28,12 +28,14 @@ class MessagesRepository implements IMessagesRepositories {
 
         return false
     }
-    insertNumber({ company, number, messages }: IMessageDTO): void {
+    insertNumber({ company, number, name, layout, messages }: IMessageDTO): void {
         const message = new Message()
 
         Object.assign(message, {
             company,
             number,
+            name,
+            layout,
             messages
         })
 

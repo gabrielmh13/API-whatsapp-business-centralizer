@@ -8,13 +8,13 @@ class MessagesController {
     }
 
     async handle(req: Request, res: Response): Promise<Response> {
-        const { company, number, messages } = req.body
+        const { company, number, name, layout, messages } = req.body
 
-        if (!company || !number || !messages) {
+        if (!company || !number || !name || !layout || !messages) {
             return res.status(400).json({ message: "Malformed request syntax" })
         }
 
-        const metaResponses = await this.messagesUseCase.execute({ company, number, messages })
+        const metaResponses = await this.messagesUseCase.execute({ company, number, name, layout, messages })
             .then((responses) => {
                 return responses
             })
@@ -25,6 +25,8 @@ class MessagesController {
         return res.json({
             company,
             number,
+            name,
+            layout,
             responses: metaResponses
         })
     }

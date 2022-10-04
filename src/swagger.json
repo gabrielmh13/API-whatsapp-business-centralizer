@@ -28,6 +28,12 @@
                                     "number": {
                                         "type": "string"
                                     },
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "layout": {
+                                        "type": "string"
+                                    },
                                     "messages": {
                                         "type": "array",
                                         "items": {
@@ -41,9 +47,17 @@
                                 "example": {
                                     "company": "Company Name",
                                     "number": "554799999999",
+                                    "name": "name",
+                                    "layout": "layout name",
                                     "messages": [
                                         {
-                                            "text": "Test message"
+                                            "text": "Test:\r\nmessage 1"
+                                        },
+                                        {
+                                            "text": "Test:\r\nmessage 2"
+                                        },
+                                        {
+                                            "text": "Test:\r\nmessage 3"
                                         }
                                     ]
                                 }
@@ -82,6 +96,12 @@
                                     "number": {
                                         "type": "string"
                                     },
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "layout": {
+                                        "type": "string"
+                                    },
                                     "messages": {
                                         "type": "array",
                                         "items": {
@@ -92,15 +112,42 @@
                                         }
                                     }
                                 },
-                                "example": {
-                                    "company": "Company Name",
-                                    "number": "554799999999",
-                                    "messages": [
-                                        {
-                                            "text": "Test message"
-                                        }
-                                    ]
-                                }
+                                "example": [
+                                    {
+                                        "company": "Company Name",
+                                        "number": "554799999999",
+                                        "name": "name",
+                                        "layout": "layout name",
+                                        "messages": [
+                                            {
+                                                "text": "Test:\r\nmessage 1"
+                                            },
+                                            {
+                                                "text": "Test:\r\nmessage 2"
+                                            },
+                                            {
+                                                "text": "Test:\r\nmessage 3"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "company": "Company Name",
+                                        "number": "554799999999",
+                                        "name": "name",
+                                        "layout": "layout name",
+                                        "messages": [
+                                            {
+                                                "text": "Test:\r\nmessage 1"
+                                            },
+                                            {
+                                                "text": "Test:\r\nmessage 2"
+                                            },
+                                            {
+                                                "text": "Test:\r\nmessage 3"
+                                            }
+                                        ]
+                                    }
+                                ]
                             }
                         }
                     }

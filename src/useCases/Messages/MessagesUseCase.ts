@@ -6,6 +6,8 @@ import { MetaClient } from "../../utils/metaClient";
 interface IRequest {
     company: string
     number: string
+    name: string
+    layout: string
     messages: Array<IMessage>
 }
 
@@ -46,15 +48,15 @@ class MessagesUseCase {
     }
 
 
-    async execute({ company, number, messages }: IRequest): Promise<any> {
+    async execute({ company, number, name, layout, messages }: IRequest): Promise<any> {
         const numberExistsInlist = this.messagesRepository.findByNumber(number)
 
         if (numberExistsInlist) {
-            setTimeout(() => this.execute({ company, number, messages }), 1000)
+            setTimeout(() => this.execute({ company, number, name, layout, messages }), 1000)
             return
         }
 
-        this.messagesRepository.insertNumber({ company, number, messages })
+        this.messagesRepository.insertNumber({ company, number, name, layout, messages })
 
         let bodys: Array<string> = []
         for (const message of messages) {

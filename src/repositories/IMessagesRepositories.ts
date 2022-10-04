@@ -7,12 +7,14 @@ interface IMessage {
 interface IMessageDTO {
     company: string
     number: string
+    name: string
+    layout: string
     messages: Array<IMessage>
 }
 
 interface IMessagesRepositories {
     findByNumber(number: string): boolean
-    insertNumber({ company, number, messages }: IMessageDTO): void
+    insertNumber({ company, number, name, layout, messages }: IMessageDTO): void
     removeNumber(number: string): void
     list(): Message[]
 }

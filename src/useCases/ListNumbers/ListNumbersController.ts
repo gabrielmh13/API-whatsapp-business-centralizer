@@ -10,7 +10,7 @@ class ListNumbersController {
     handle(req: Request, res: Response): Response {
         const numbers = this.listNumbersUseCase.execute()
 
-        return res.status(200).json(numbers)
+        return res.json(numbers)
     }
 }
 

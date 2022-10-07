@@ -21,6 +21,23 @@ class MessagesUseCase {
 
     }
 
+    verifyNumberInList(number: string) {
+        return new Promise(resolve => {
+
+            function loop(rep: IMessagesRepositories) {
+                const numberExistsInlist = rep.findByNumber(number)
+                if (numberExistsInlist) {
+                    setTimeout(() => loop(rep), 1000)
+                }
+                else {
+                    return Promise.resolve(resolve(''))
+                }
+            }
+
+            loop(this.messagesRepository)
+        })
+    }
+
     sendRequestsInSequence(bodys: Array<string>): Promise<any> {
         let responses: Array<IResponse> = []
 
@@ -28,7 +45,7 @@ class MessagesUseCase {
 
         bodys.map((body) => {
             promissesArray.push(() => {
-                return new Promise((resolve, reject) => {
+                return new Promise(resolve => {
                     resolve(MetaClient.post(`${process.env.META_URL}`, body).then((res) => {
                         responses.push({
                             status: res.status,
@@ -49,12 +66,7 @@ class MessagesUseCase {
 
 
     async execute({ company, number, name, layout, messages }: IRequest): Promise<any> {
-        const numberExistsInlist = this.messagesRepository.findByNumber(number)
-
-        if (numberExistsInlist) {
-            setTimeout(() => this.execute({ company, number, name, layout, messages }), 1000)
-            return
-        }
+        await this.verifyNumberInList(number)
 
         this.messagesRepository.insertNumber({ company, number, name, layout, messages })
 

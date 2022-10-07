@@ -22,13 +22,15 @@ class MessagesController {
                 res.status(500).send({ error: "Failed to send messages" })
             })
 
-        return res.json({
+        const response = {
             company,
             number,
             name,
             layout,
             responses: metaResponses
-        })
+        }
+
+        return res.json(response)
     }
 }
 

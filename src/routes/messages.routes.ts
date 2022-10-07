@@ -3,9 +3,11 @@ import { Router } from 'express'
 import { listNumbersController } from '../useCases/ListNumbers'
 import { messagesController } from '../useCases/Messages/'
 
+import { log } from '../middleware/log'
+
 const messagesRouter = Router()
 
-messagesRouter.post('/', (req, res) => {
+messagesRouter.post('/', log, (req, res) => {
     messagesController.handle(req, res)
 })
 
